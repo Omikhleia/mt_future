@@ -17,9 +17,10 @@ On its own, it behaves as an item pedestal (right-click with an item to insert i
 But when connected to a MV power supply, the machine turns into and incubator and cloning facility for your pets. Place a mob (egg) in it, and it due time you will get its exact clones.
 
 Although the machine is of a very advanced technology, by choice of design:
-- It is energy expensive
-- It is pretty slow
-- It does not have any inventory but only outputs to tubes
+- It is somewhat energy expensive.
+- It is pretty slow.
+- It does not have any inventory, but only outputs to tubes.
+- It still demands power when containing other non-clonable items.
 
 ![](doc/incubator_setup.png)
 
