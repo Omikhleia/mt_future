@@ -2,6 +2,8 @@
 
 This experimental mod adds extra technic machines for your space and futuristic adventures in Minetest.
 
+Totally done in the spirit of immersion!
+
 It depends on:
 - technic, pipeworks
 - default, bucket
