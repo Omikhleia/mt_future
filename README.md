@@ -22,8 +22,14 @@ Although the machine is of a very advanced technology, by choice of design:
 - It does not have any inventory but only outputs to tubes
 
 ![](doc/incubator_setup.png)
+
 _A bee in the incubator, and a cloned bee in the ouput tube_
 
 ![](doc/incubator_craft.png)
+
 _Crafting recipe_
+
+![](doc/incubator_no_network.png)
+
+_Incubators used as mere item holder_
 
