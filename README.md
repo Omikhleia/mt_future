@@ -3,10 +3,10 @@
 This experimental mod adds extra technic machines for your space and futuristic adventures in Minetest.
 
 It depends on:
-- technic
-- pipeworks
+- technic, pipeworks
 - default, bucket
-- mobs (redo)
+- mobs (redo) — for the Incubator
+- vacuum — for the Oxygenator (soon coming)
 
 ## Incubator
 
@@ -22,5 +22,8 @@ Although the machine is of a very advanced technology, by choice of design:
 - It does not have any inventory but only outputs to tubes
 
 ![](doc/incubator_setup.png)
+_A bee in the incubator, and a cloned bee in the ouput tube_
 
 ![](doc/incubator_craft.png)
+_Crafting recipe_
+
