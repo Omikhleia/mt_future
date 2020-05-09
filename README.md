@@ -6,11 +6,11 @@ It depends on:
 - technic, pipeworks
 - default, bucket
 - mobs (redo) — for the Incubator
-- vacuum — for the Oxygenator (soon coming)
+- vacuum — for the Oxygenator (soon coming?)
 
 ## Incubator
 
-This MV machine consist in a tank of nutrient-rich liquid.
+This MV machine consists in a tank of nutrient-rich liquid.
 
 On its own, it behaves as an item pedestal (right-click with an item to insert it, punch to release it), accessible only to its owner. You may as well use it as such, as a kind of aquarium for display, if this is your wish.
 
