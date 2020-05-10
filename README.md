@@ -34,7 +34,7 @@ _Crafting recipe_
 
 ![](doc/incubator_no_network.png)
 
-_Incubators used as mere item holder_
+_Incubators used as mere item holders_
 
 ## Hydroponics
 
@@ -52,6 +52,6 @@ _A small hydroponic system_
 
 ![](doc/hydroponics_craft.png)
 
-_Crafting recipe: a pipe segment, a storage take and some wool and sillates for substrate_
+_Crafting recipe: a pipe segment, a storage take and some wool and sillicates as substrate_
 
 
