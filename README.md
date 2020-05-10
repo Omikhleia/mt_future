@@ -1,18 +1,18 @@
 # Futuristic machines for Minetest
 
-This experimental mod adds extra technic machines for your space and futuristic adventures in Minetest.
+This experimental mod adds extra machines for your space and futuristic adventures in Minetest.
 
 Totally done in the spirit of immersion!
 
 It depends on:
 - technic, pipeworks
-- default, bucket
+- default, bucket, wool
 - mobs (redo) — for the Incubator
 - vacuum — for the Oxygenator (soon coming?)
 
 ## Incubator
 
-This MV machine consists in a tank of nutrient-rich liquid.
+The **incubator** is a MV machine consisting in a tank of nutrient-rich liquid.
 
 On its own, it behaves as an item pedestal (right-click with an item to insert it, punch to release it), accessible only to its owner. You may as well use it as such, as a kind of aquarium for display, if this is your wish.
 
@@ -35,4 +35,23 @@ _Crafting recipe_
 ![](doc/incubator_no_network.png)
 
 _Incubators used as mere item holder_
+
+## Hydroponics
+
+Bored using hoes for farming on regular soil? Annoyed to need a flowing water source nearby? Bothered that you might accidently dig too easily your farming soil?
+
+Or simply curious what these fancy pipes (not tubes) may be worth for?
+
+Then it's time to turn to hydroponics, a method of growing plants without soil, by instead using mineral nutrient solutions in a water solvent.
+
+The **hydroponic substrate block** is your new friend. It connects to pipes on all sides, and when water flows in, it becomes an artificial soil for your crops and plants. 
+
+![](doc/hydroponics_setup.png)
+
+_A small hydroponic system_
+
+![](doc/hydroponics_craft.png)
+
+_Crafting recipe: a pipe segment, a storage take and some wool and sillates for substrate_
+
 
