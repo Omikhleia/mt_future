@@ -75,6 +75,26 @@ minetest.register_entity("mt_future:item", {
       self.object:set_properties({textures={self.texture}})
     end
     self.object:set_properties({automatic_rotate=1})
+
+    if self.texture ~= nil and self.nodename ~= nil then
+      local entity_pos = vector.round(self.object:get_pos())
+      local objs = minetest.get_objects_inside_radius(entity_pos, 0.5)
+      for _, obj in ipairs(objs) do
+        if obj ~= self.object and
+           obj:get_luaentity() and
+           obj:get_luaentity().name == "mt_future:item" and
+           obj:get_luaentity().nodename == self.nodename and
+           obj:get_properties() and
+           obj:get_properties().textures and
+           obj:get_properties().textures[1] == self.texture then
+          minetest.log("action","[mt_future] Removing extra " ..
+            self.texture .. " found in " .. self.nodename .. " at " ..
+            minetest.pos_to_string(entity_pos))
+          self.object:remove()
+          break
+        end
+      end
+    end
   end,
   get_staticdata = function(self)
     if self.nodename ~= nil and self.texture ~= nil then
@@ -128,7 +148,9 @@ local incubator_on_rightclick = function(pos, node, clicker, itemstack)
   if not itemstack then return end
   local meta = minetest.get_meta(pos)
 
-  if clicker:get_player_name() == meta:get_string("owner") then
+  local name = clicker and clicker:get_player_name()
+  if name == meta:get_string("owner")
+     or minetest.check_player_privs(name, "protection_bypass") then
     if itemstack:get_name() == "mt_future:nutrients" then
       -- refilling
       local n = math.min(itemstack:get_count(), incubator_max_nutrients_level - meta:get_int("nutrients_level"))
@@ -151,19 +173,31 @@ local incubator_on_rightclick = function(pos, node, clicker, itemstack)
   return itemstack
 end
 
-local incubator_on_punch = function(pos,node,puncher)
+local incubator_on_punch = function(pos, node,  puncher)
   local meta = minetest.get_meta(pos)
-  if puncher:get_player_name() == meta:get_string("owner") then
+
+  local name = puncher and puncher:get_player_name()
+  if name == meta:get_string("owner")
+     or minetest.check_player_privs(name, "protection_bypass") then
     drop_item(pos, node)
   end
 end
 
-local incubator_can_dig = function(pos,player)
+local incubator_can_dig = function(pos, player)
+  if not player then return end
+
+  local name = player and player:get_player_name()
   local meta = minetest.get_meta(pos)
-    if not meta:get_string("owner") or meta:get_string("owner") == "" then
-    return true
-    end
-  return player:get_player_name() == meta:get_string("owner")
+  return name == meta:get_string("owner") or
+      minetest.check_player_privs(name, "protection_bypass")
+end
+
+local incubator_on_destruct = function(pos)
+  local meta = minetest.get_meta(pos)
+  local node = minetest.get_node(pos)
+  if meta:get_string("item") ~= "" then
+    drop_item(pos, node)
+  end
 end
 
 -- Nodes
@@ -218,6 +252,7 @@ minetest.register_node("mt_future:incubator", {
   on_rightclick = incubator_on_rightclick,
   on_punch = incubator_on_punch,
   can_dig = incubator_can_dig,
+  on_destruct = incubator_on_destruct,
 
   technic_run = function(pos, node)
     local meta     = minetest.get_meta(pos)
@@ -336,6 +371,7 @@ minetest.register_node("mt_future:incubator_depleted", {
   on_rightclick = incubator_on_rightclick,
   on_punch = incubator_on_punch,
   can_dig = incubator_can_dig,
+  on_destruct = incubator_on_destruct,
 
   technic_run = function(pos, node)
     local meta     = minetest.get_meta(pos)
@@ -372,15 +408,29 @@ minetest.register_node("mt_future:incubator_depleted", {
 technic.register_machine("MV", "mt_future:incubator", technic.receiver)
 technic.register_machine("MV", "mt_future:incubator_depleted", technic.receiver)
 
--- automatically restore entities lost from frames/pedestals
+-- automatically restore entities lost
 -- due to /clearobjects or similar
-minetest.register_abm({
-  nodenames = { "mt_future:incubator", "mt_future:incubator_depleted" },
-  interval = 15,
-  chance = 1,
-  action = function(pos, node, active_object_count, active_object_count_wider)
-    if #minetest.get_objects_inside_radius(pos, 0.5) > 0 then return end
-    update_item(pos, node)
+minetest.register_lbm({
+  label = "Maintain mt_future incubator entities",
+  name = "mt_future:maintain_entities",
+  nodenames = {"mt_future:incubator", "mt_future:incubator_depleted"},
+  run_at_every_load = true,
+  action = function(pos, node)
+    minetest.after(0,
+      function(pos, node)
+        local meta = minetest.get_meta(pos)
+        local itemstring = meta:get_string("item")
+        if itemstring ~= "" then
+          local entity_pos = pos
+          local objs = minetest.get_objects_inside_radius(entity_pos, 0.5)
+          if #objs == 0 then
+            minetest.log("action","[mt_future] Replacing missing " ..
+              itemstring .. " in " .. node.name .. " at " ..
+              minetest.pos_to_string(pos))
+            update_item(pos, node)
+          end
+        end
+      end,
+    pos, node)
   end
 })
-
