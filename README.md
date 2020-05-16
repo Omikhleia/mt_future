@@ -12,13 +12,15 @@ It depends on:
 
 ## Items
 
-- "Indistinct nutrients"
-   - Extracted from a "failed cloning experiment",
-   - or crafted from a bucket of water, salt and dirt
-- "Failed cloning experiment"
-   - Generated upon failure by the Incubator
-- "Soylent crackers" of various colors
-   - Crafted from "indistinct nutrients" and dye.
+| Item                        | Image     | Crafting |
+| --------------------------- | -------- | ----- |
+| "Indistinct nutrients"      | ![](doc/indistinct_nutrients.png) | Extract from a failed cloning experiment or craft from a bucket of water, salt and dirt | 
+| "Failed cloning experiment" | ![](doc/failed_cloning_experiment.png) | Generated upon failure by the Incubator |
+| "Soylent crackers"          | ![](doc/soylent_crackers.png) | Craft from "indistinct nutrients" and dye. |
+
+As artificial food, the crackers are not very nutritive, but you may also use them as fuel...
+
+Unprocessed nutrients and cloning experiments should not be eaten...
 
 ## Incubator
 
@@ -48,10 +50,6 @@ _A bee in the incubator, and a cloned bee in the ouput tube_
 ![](doc/incubator_craft.png)
 
 _Crafting recipe_
-
-![](doc/incubator_no_network.png)
-
-_Incubators used as mere item holders_
 
 ## Hydroponics
 
