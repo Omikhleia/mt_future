@@ -16,3 +16,34 @@ minetest.register_craft( {
   }
 })
 
+local soylent_colors = {
+  "red",
+  "green",
+  "blue",
+  "yellow"
+}
+
+for _, color in ipairs(soylent_colors) do
+  minetest.register_craft({
+    type = "shapeless",
+    output = "mt_future:soylent_"..color.." 11",
+    recipe = {
+      "dye:"..color,
+      "mt_future:nutrients"
+    },
+  })
+  minetest.register_craft({
+    type = "fuel",
+    recipe = "mt_future:soylent_"..color,
+    burntime = 1,
+  })
+end
+
+technic.register_extractor_recipe({input = {"mt_future:embryo"}, output = "mt_future:nutrients 3"})
+
+minetest.register_craft( {
+  type = "shapeless",
+  output = "mt_future:nutrients 10",
+  recipe = {'farming:salt', 'bucket:bucket_water', 'default:dirt'}
+})
+
