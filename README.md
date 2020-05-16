@@ -7,22 +7,39 @@ Totally done in the spirit of immersion!
 It depends on:
 - technic, pipeworks
 - default, bucket, wool
-- mobs (redo) — for the Incubator
+- mobs (redo), farming (for salt), dye — for the Incubator
 - vacuum — for the Oxygenator (soon coming?)
+
+## Items
+
+- "Indistinct nutrients"
+   - Extracted from a "failed cloning experiment",
+   - or crafted from a bucket of water, salt and dirt
+- "Failed cloning experiment"
+   - Generated upon failure by the Incubator
+- "Soylent crackers" of various colors
+   - Crafted from "indistinct nutrients" and dye.
 
 ## Incubator
 
 The **incubator** is a MV machine consisting in a tank of nutrient-rich liquid.
 
-On its own, it behaves as an item pedestal (right-click with an item to insert it, punch to release it), accessible only to its owner. You may as well use it as such, as a kind of aquarium for display, if this is your wish.
+On its own, it behaves as an item pedestal (right-click with an item to insert it, punch to release it), accessible only to its owner (or privileged bypassers). You may as well use it as such, as a kind of aquarium for display, if this is your wish.
 
-But when connected to a MV power supply, the machine turns into and incubator and cloning facility for your pets. Place a mob (egg) in it, and it due time you will get its exact clones.
+When connected to a MV power supply, the machine turns into and incubator and cloning facility for your pets. Place a mob (egg) in it, and it due time you will get its exact clones.
 
 Although the machine is of a very advanced technology, by choice of design:
-- It is somewhat energy expensive.
-- It is pretty slow.
-- It does not have any inventory, but only outputs to tubes.
-- It still demands power when containing other non-clonable items.
+- It is somewhat energy expensive when operating
+- It is pretty slow to clone mobs
+- It does not have any inventory, and only outputs to tubes.
+- It still demands power when containing other non-clonable items or when depleted.
+- The nutrient liquid depletes and has to be refilled (or the incubator replaced)
+   - Re-fill with "nutrients" (right-click with a stack of nutrients)
+- There are random mischances of failure
+   - Normal failure: a "failed cloning experiment" is ejected and operating resumes.
+   - Critical failure, the input mob is destroyed (replaced by a "failed cloning experiment")
+   - The longer the input item string, the higher the failure ratio. So you may clone your favorite tamed, 
+     even rune-protected pet, but expect more failures...
 
 ![](doc/incubator_setup.png)
 
