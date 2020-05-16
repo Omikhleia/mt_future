@@ -46,4 +46,3 @@ minetest.register_craft( {
   output = "mt_future:nutrients 10",
   recipe = {'farming:salt', 'bucket:bucket_water', 'default:dirt'}
 })
-

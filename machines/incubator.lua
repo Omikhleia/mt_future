@@ -6,7 +6,7 @@
 
 local incubator_demand = 1800 -- Energy expensive: 1 MV hydro without upgrade.
 local incubator_depleted_demand = 180
-local incubator_time = 6 -- Slow: nb iterations of the technic run (whatever it is, approx. 1s).
+local incubator_time = 60 -- Slow: nb iterations of the technic run (whatever it is, approx. 1s).
 local incubator_max_nutrients_level = 180 -- e.g. approx 3 incub. time.
 local incubator_tube_velocity = 1
 
